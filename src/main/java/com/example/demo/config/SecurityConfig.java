@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/registration/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/edit/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/login", "/registration").anonymous()
+                .antMatchers("/login").anonymous()
                 .antMatchers("/login*").permitAll()
                 .and().formLogin();
 
@@ -59,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    public static NoOpPasswordEncoder passwordEncoder() {
+        return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
     }
 }

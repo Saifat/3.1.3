@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -35,15 +37,15 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    @Transient
-    private String role;
 
-    public String getRole() {
-        return role;
+    private String rol;
+
+    public String getRol() {
+        return rol;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRol(String role) {
+        this.rol = role;
     }
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -160,7 +162,7 @@ public class User implements UserDetails {
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
                 ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
+                ", rol='" + rol + '\'' +
                 ", roles=" + roles +
                 '}';
     }

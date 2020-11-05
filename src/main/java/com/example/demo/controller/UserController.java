@@ -21,27 +21,27 @@ public class UserController {
         return "login";
     }
 
-    @RequestMapping(value = "registration", method = RequestMethod.GET)
-    public String registr(Model model){
-        User user = new User();
-        model.addAttribute(user);
-        return "registration";
-    }
-    @PostMapping("registration")
-    public String registrNew(@ModelAttribute("user") User user){
-        userService.addUser(user);
-        return "redirect:/admin";
-    }
-
-
-    @GetMapping(value = "index")
-    public String viewUser(Model model) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User user = (User) authentication.getPrincipal();
-        model.addAttribute("user", user);
-        return "index";
-    }
-
+//    @RequestMapping(value = "registration", method = RequestMethod.GET)
+//    public String registr(Model model){
+//        User user = new User();
+//        model.addAttribute(user);
+//        return "registration";
+//    }
+//    @PostMapping("registration")
+//    public String registrNew(@ModelAttribute("user") User user){
+//        userService.addUser(user);
+//        return "redirect:/admin";
+//    }
+//
+//
+//    @GetMapping(value = "index")
+//    public String viewUser(Model model) {
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        User user = (User) authentication.getPrincipal();
+//        model.addAttribute("user", user);
+//        return "index";
+//    }
+//
 
 
 

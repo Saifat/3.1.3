@@ -31,7 +31,7 @@ public class AdminController {
     public String helloAdmin(){
         return "admin";
     }
-//
+////
 //    @GetMapping(value = "/admin")
 //    public String listUsers(Model model){
 //        List<User> userList = userService.listUsers();
@@ -45,38 +45,38 @@ public class AdminController {
 //        return "admin";
 //    }
 
-
-    @RequestMapping("/remove")
-    public String removeUser(@RequestParam Long id ){
-        userService.removeUser(id);
-        return "redirect:/admin";
-    }
-
-
-
-    @PostMapping("/edit")
-    public String editUser(@RequestParam Long id, @RequestParam String firstname, @RequestParam String lastName,
-                           @RequestParam Long age, @RequestParam String username, @RequestParam String password,
-                           @RequestParam(required = false) String roleList){
-        User user1 = userService.getUserById(id);
-        user1.setFirstName(firstname);
-        user1.setLastName(lastName);
-        user1.setAge(age);
-        user1.setUsername(username);
-        user1.setPassword(password);
-        if (roleList != null) {
-            if (roleList.equals("ROLE_ADMIN")) {
-                user1.getRoles().clear();
-                user1.getRoles().add(new Role(1L, "ROLE_ADMIN"));
-            } else {
-                user1.getRoles().clear();
-                user1.getRoles().add(new Role(2L, "ROLE_USER"));
-            }
-        }
-        userService.updateUser(user1);
-
-
-        return "redirect:/admin";
-    }
+//
+//    @RequestMapping("/remove")
+//    public String removeUser(@RequestParam Long id ){
+//        userService.removeUser(id);
+//        return "redirect:/admin";
+//    }
+//
+//
+//
+//    @PostMapping("/edit")
+//    public String editUser(@RequestParam Long id, @RequestParam String firstname, @RequestParam String lastName,
+//                           @RequestParam Long age, @RequestParam String username, @RequestParam String password,
+//                           @RequestParam(required = false) String roleList){
+//        User user1 = userService.getUserById(id);
+//        user1.setFirstName(firstname);
+//        user1.setLastName(lastName);
+//        user1.setAge(age);
+//        user1.setUsername(username);
+//        user1.setPassword(password);
+//        if (roleList != null) {
+//            if (roleList.equals("ROLE_ADMIN")) {
+//                user1.getRoles().clear();
+//                user1.getRoles().add(new Role(1L, "ROLE_ADMIN"));
+//            } else {
+//                user1.getRoles().clear();
+//                user1.getRoles().add(new Role(2L, "ROLE_USER"));
+//            }
+//        }
+//        userService.updateUser(user1);
+//
+//
+//        return "redirect:/admin";
+//    }
 
 }

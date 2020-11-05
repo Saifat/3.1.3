@@ -33,13 +33,14 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void addUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        if (user.getRole().equals("ROLE_ADMIN")) {
+        if (user.getRol().equals("ROLE_ADMIN")) {
             user.setRoles(Collections.singleton(new Role(1L, "ROLE_ADMIN")));
         } else {
             user.setRoles(Collections.singleton(new Role(2L, "ROLE_USER")));
         }
 
         entityManager.persist(user);
+
     }
 
     @Override
